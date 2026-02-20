@@ -1,0 +1,557 @@
+/**
+ * Note Keeper Pro - Complete Visual Redesign
+ * Warm, soft, and modern aesthetic for comfortable long-term use
+ * @author Oyewole Emmanuel
+ * @updated 2024-02-04
+ */
+
+/* ============================================
+   GOOGLE FONTS IMPORT
+   ============================================ */
+@import url('https://fonts.googleapis.com/css2?family=McLaren&family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* ============================================
+   CSS VARIABLES - LIGHT MODE (DEFAULT)
+   ============================================ */
+:root {
+  /* Background Colors */
+  --bg-main: #f7f7f5;
+  --bg-secondary: #efefeb;
+  --bg-card: #ffffff;
+  --bg-input: #fafaf8;
+  --bg-elevated: #ffffff;
+  
+  /* Text Colors */
+  --text-primary: #2a2a2a;
+  --text-secondary: #5f5f5f;
+  --text-muted: #9a9a9a;
+  
+  /* Accent Colors */
+  --accent-primary: #f4c430;
+  --accent-primary-hover: #e6b820;
+  --accent-blue: #8ecae6;
+  --accent-green: #9fd3a2;
+  --accent-pink: #f2b5c4;
+  --accent-purple: #cdb4db;
+  --accent-orange: #ffb703;
+  
+  /* Note Tints - Light Mode */
+  --note-yellow: #fff6d8;
+  --note-blue: #eef6fb;
+  --note-green: #eef7f1;
+  --note-pink: #fdeef3;
+  --note-purple: #f3effa;
+  --note-white: #ffffff;
+  --note-orange: #fff3e0;
+  --note-teal: #e0f2f1;
+  
+  /* Shadows */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.1);
+  --shadow-hover: 0 6px 20px rgba(0, 0, 0, 0.12);
+  
+  /* Borders */
+  --border-subtle: rgba(0, 0, 0, 0.06);
+  --border-light: rgba(0, 0, 0, 0.08);
+  --border-medium: rgba(0, 0, 0, 0.12);
+  
+  /* Radius */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+  --radius-full: 9999px;
+  
+  /* Spacing */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+  
+  /* Header */
+  --header-bg: rgba(247, 247, 245, 0.95);
+  --header-text: #2a2a2a;
+  
+  /* Transitions */
+  --transition-fast: 150ms ease;
+  --transition-base: 250ms ease;
+  --transition-slow: 350ms ease;
+}
+
+/* ============================================
+   CSS VARIABLES - DARK MODE
+   ============================================ */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-main: #181818;
+    --bg-secondary: #202020;
+    --bg-card: #242424;
+    --bg-input: #2a2a2a;
+    --bg-elevated: #2c2c2c;
+    --text-primary: #eaeaea;
+    --text-secondary: #bdbdbd;
+    --text-muted: #8c8c8c;
+    --accent-primary: #f4c430;
+    --accent-primary-hover: #ffd147;
+    --note-yellow: #2a2618;
+    --note-blue: #1f252a;
+    --note-green: #1f2a23;
+    --note-pink: #2a1f24;
+    --note-purple: #242030;
+    --note-white: #242424;
+    --note-orange: #2a2318;
+    --note-teal: #1f2a28;
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.4);
+    --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.5);
+    --shadow-hover: 0 6px 20px rgba(0, 0, 0, 0.45);
+    --border-subtle: rgba(255, 255, 255, 0.06);
+    --border-light: rgba(255, 255, 255, 0.08);
+    --border-medium: rgba(255, 255, 255, 0.12);
+    --header-bg: rgba(24, 24, 24, 0.95);
+    --header-text: #eaeaea;
+  }
+}
+
+body.dark {
+  --bg-main: #181818;
+  --bg-secondary: #202020;
+  --bg-card: #242424;
+  --bg-input: #2a2a2a;
+  --bg-elevated: #2c2c2c;
+  --text-primary: #eaeaea;
+  --text-secondary: #bdbdbd;
+  --text-muted: #8c8c8c;
+  --accent-primary: #f4c430;
+  --accent-primary-hover: #ffd147;
+  --note-yellow: #2a2618;
+  --note-blue: #1f252a;
+  --note-green: #1f2a23;
+  --note-pink: #2a1f24;
+  --note-purple: #242030;
+  --note-white: #242424;
+  --note-orange: #2a2318;
+  --note-teal: #1f2a28;
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.5);
+  --shadow-hover: 0 6px 20px rgba(0, 0, 0, 0.45);
+  --border-subtle: rgba(255, 255, 255, 0.06);
+  --border-light: rgba(255, 255, 255, 0.08);
+  --border-medium: rgba(255, 255, 255, 0.12);
+  --header-bg: rgba(24, 24, 24, 0.95);
+  --header-text: #eaeaea;
+}
+
+/* ============================================
+   BASE RESET & TYPOGRAPHY
+   ============================================ */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  background-color: var(--bg-main);
+  color: var(--text-primary);
+  line-height: 1.6;
+  font-weight: 400;
+  min-height: 100vh;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Inter', sans-serif;
+  line-height: 1.3;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+h1 { font-size: 2rem; font-weight: 700; letter-spacing: -0.02em; }
+h2 { font-size: 1.5rem; }
+h3 { font-size: 1.125rem; }
+
+p, a, figcaption {
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+code {
+  font-family: 'Monaco', 'Courier New', monospace;
+}
+
+::selection {
+  background-color: var(--accent-primary);
+  color: var(--text-primary);
+}
+
+*:focus-visible {
+  outline: 2px solid var(--accent-primary);
+  outline-offset: 2px;
+}
+
+/* ============================================
+   SCROLLBAR
+   ============================================ */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--text-muted);
+  border-radius: var(--radius-sm);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-secondary);
+}
+
+/* ============================================
+   HEADER
+   ============================================ */
+header {
+  background: var(--header-bg);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border-subtle);
+  box-shadow: var(--shadow-sm);
+}
+
+header h1 {
+  color: var(--header-text);
+  font-family: 'McLaren', cursive;
+  font-weight: 400;
+  font-size: 1.75rem;
+}
+
+/* ============================================
+   INPUTS & FORMS
+   ============================================ */
+input, textarea {
+  background: var(--bg-input);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  color: var(--text-primary);
+  padding: 12px 16px;
+  font-family: inherit;
+  font-size: 0.9375rem;
+  transition: all var(--transition-fast);
+}
+
+input:focus, textarea:focus {
+  outline: none;
+  border-color: var(--accent-primary);
+  background: var(--bg-elevated);
+  box-shadow: 0 0 0 3px rgba(244, 196, 48, 0.1);
+}
+
+input::placeholder, textarea::placeholder {
+  color: var(--text-secondary);
+  opacity: 1;
+}
+
+form.create-note {
+  background: var(--bg-elevated);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--border-light);
+}
+
+form.create-note input[name="title"] {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-primary) !important;
+  background: var(--bg-input);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  padding: 12px 16px;
+  margin-bottom: 12px;
+}
+
+form.create-note input[name="title"]::placeholder {
+  color: var(--text-secondary) !important;
+  opacity: 1;
+}
+
+form.create-note input[name="title"]:focus {
+  border-color: var(--accent-primary);
+  background: var(--bg-elevated);
+  box-shadow: 0 0 0 3px rgba(244, 196, 48, 0.1);
+}
+
+form.create-note textarea {
+  color: var(--text-primary) !important;
+  background: var(--bg-input);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  padding: 12px 16px;
+  resize: vertical;
+  min-height: 120px;
+}
+
+form.create-note textarea::placeholder {
+  color: var(--text-secondary) !important;
+  opacity: 1;
+}
+
+form.create-note textarea:focus {
+  border-color: var(--accent-primary);
+  background: var(--bg-elevated);
+  box-shadow: 0 0 0 3px rgba(244, 196, 48, 0.1);
+}
+
+/* ============================================
+   BUTTONS
+   ============================================ */
+button {
+  font-family: inherit;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  border: none;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  padding: 10px 20px;
+}
+
+.btn.primary {
+  background: var(--accent-primary);
+  color: var(--text-primary);
+  box-shadow: var(--shadow-sm);
+}
+
+.btn.primary:hover {
+  background: var(--accent-primary-hover);
+  transform: translateY(-1px);
+}
+
+.btn:not(.primary) {
+  background: var(--bg-card);
+  color: var(--text-primary);
+  border: 1px solid var(--border-light);
+}
+
+.btn:not(.primary):hover {
+  background: var(--bg-elevated);
+}
+
+.btn.sm {
+  padding: 6px 14px;
+  font-size: 0.875rem;
+}
+
+/* ============================================
+   NOTES / CARDS
+   ============================================ */
+.note {
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border-subtle);
+  transition: all var(--transition-base);
+}
+
+.note:hover {
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-2px);
+}
+
+.note h1, .note h2, .note h3 {
+  color: var(--text-primary);
+  font-weight: 600;
+  font-size: 1.125rem;
+  margin-bottom: 8px;
+}
+
+.note p {
+  color: var(--text-secondary);
+  font-size: 0.9375rem;
+}
+
+/* Note color tints */
+.note[style*="#ffffff"] { background: var(--note-white) !important; }
+.note[style*="#ffebee"] { background: var(--note-pink) !important; }
+.note[style*="#e3f2fd"] { background: var(--note-blue) !important; }
+.note[style*="#e8f5e9"] { background: var(--note-green) !important; }
+.note[style*="#fff3e0"] { background: var(--note-orange) !important; }
+.note[style*="#f3e5f5"] { background: var(--note-purple) !important; }
+.note[style*="#fce4ec"] { background: var(--note-pink) !important; }
+.note[style*="#e0f2f1"] { background: var(--note-teal) !important; }
+
+/* ============================================
+   TAGS / CHIPS
+   ============================================ */
+.tag, .chip {
+  display: inline-flex;
+  padding: 6px 14px;
+  border-radius: var(--radius-full);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  background: var(--bg-secondary);
+  color: var(--text-secondary);
+  transition: all var(--transition-fast);
+}
+
+.tag:hover, .chip:hover {
+  background: var(--bg-input);
+  transform: translateY(-1px);
+}
+
+.tag.active, .chip.active {
+  background: var(--accent-primary);
+  color: var(--text-primary);
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+footer {
+  background: var(--bg-secondary);
+  border-top: 1px solid var(--border-subtle);
+  padding: var(--space-xl) var(--space-md);
+  color: var(--text-muted);
+}
+
+footer a {
+  color: var(--text-secondary);
+  text-decoration: none;
+}
+
+footer a:hover {
+  color: var(--accent-primary);
+}
+
+/* ============================================
+   MATERIAL-UI OVERRIDES
+   ============================================ */
+.MuiCard-root {
+  background: var(--bg-card) !important;
+  border-radius: var(--radius-lg) !important;
+  box-shadow: var(--shadow-sm) !important;
+  border: 1px solid var(--border-subtle) !important;
+}
+
+.MuiPaper-root {
+  background: var(--bg-card) !important;
+  color: var(--text-primary) !important;
+}
+
+.MuiAppBar-root {
+  background: var(--header-bg) !important;
+  color: var(--header-text) !important;
+  box-shadow: var(--shadow-sm) !important;
+  border-bottom: 1px solid var(--border-subtle) !important;
+}
+
+.MuiButton-contained {
+  background: var(--accent-primary) !important;
+  color: var(--text-primary) !important;
+}
+
+.MuiButton-contained:hover {
+  background: var(--accent-primary-hover) !important;
+}
+
+.MuiChip-root {
+  background: var(--bg-secondary) !important;
+  color: var(--text-secondary) !important;
+  border-radius: var(--radius-full) !important;
+}
+
+.MuiIconButton-root {
+  color: var(--text-secondary) !important;
+}
+
+.MuiIconButton-root:hover {
+  background: var(--bg-secondary) !important;
+}
+
+.MuiOutlinedInput-notchedOutline {
+  border-color: var(--border-light) !important;
+}
+
+.MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+  border-color: var(--accent-primary) !important;
+}
+
+.MuiInputBase-input {
+  color: var(--text-primary) !important;
+}
+
+.MuiInputBase-input::placeholder {
+  color: var(--text-secondary) !important;
+  opacity: 1 !important;
+}
+
+.MuiInputLabel-root {
+  color: var(--text-secondary) !important;
+}
+
+.MuiInputLabel-root.Mui-focused {
+  color: var(--accent-primary) !important;
+}
+
+.MuiLinearProgress-root {
+  background: var(--bg-secondary) !important;
+}
+
+.MuiLinearProgress-bar {
+  background: var(--accent-primary) !important;
+}
+
+/* ============================================
+   ANIMATIONS
+   ============================================ */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideIn {
+  from { transform: translateX(-20px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes scaleIn {
+  from { transform: scale(0.9); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.fade-in { animation: fadeIn 0.3s ease; }
+.slide-in { animation: slideIn 0.3s ease; }
+.scale-in { animation: scaleIn 0.3s ease; }
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 768px) {
+  html { font-size: 15px; }
+  h1 { font-size: 1.75rem; }
+}
+
+@media (max-width: 480px) {
+  html { font-size: 14px; }
+  h1 { font-size: 1.5rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
